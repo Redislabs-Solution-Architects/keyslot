@@ -1,0 +1,1 @@
+python3 -m nuitka --onefile --output-filename=ks --remove-output keyslot.py 
