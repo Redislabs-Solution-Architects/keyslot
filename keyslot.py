@@ -4,6 +4,7 @@
 import crcmod
 from argparse import ArgumentParser
 import requests
+import re2
 
 SHARD_EP = '/v1/shards/stats'
 
@@ -12,11 +13,10 @@ requests.urllib3.disable_warnings()
 
 def find_slot(args) -> dict:
     key = args.key
-    if key.find('{') >= 0:
-        hash_tag = key[key.find('{') + 1 : key.find('}')]
-        if hash_tag:
-            key = hash_tag
-    
+    m = re2.match(".*\\{(?P<tag>.*)\\}.*", key)
+    if m:
+        key = m.group('tag')
+
     slot = crc16(bytes(key.encode())) % 16384
     node = 1
     for shard in fetch_shards(args):
