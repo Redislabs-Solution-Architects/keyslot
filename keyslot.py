@@ -13,7 +13,7 @@ requests.urllib3.disable_warnings()
 def find_slot(args) -> dict:
     key = args.key
     if key.find('{') >= 0:
-        hash_tag = key[key.find('{') + 1 : key.find('}')]
+        hash_tag = key[key.rfind('{') + 1 : key.rfind('}')]
         if hash_tag:
             key = hash_tag
     
