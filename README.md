@@ -8,7 +8,7 @@
 5.  [Usage](#usage)
 
 ## Summary <a name="summary"></a>
-This is a utility script for determining the key slot and node location for a given key string.
+This is a utility for determining the key slot and node location for a given key string.  This utility replicates the expected hash behavior for Redis OSS documented [here](https://redis.io/docs/reference/cluster-spec/).  Redis Enterprise hash behavior is currently inconsistent with OSS.  This inconsistency is on roadmap to be corrected.  This utility will yield correct OSS hash slots now and will yield correct RE slots in the future when that RE correction is in place.   
 
 ## Features <a name="features"></a>
 - Calculate key slot based on the Redis hash slot algorithm
